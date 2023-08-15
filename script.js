@@ -114,21 +114,25 @@ function renderFire() {
   document.querySelector("#fireCanvas").innerHTML = html;
 }
 
+let increasefire = 8;
+const maxIncrease = 36;
+const minIncrease = 4;
+
+document.getElementById("increaseFire").addEventListener("click", function () {
+  if (increasefire < maxIncrease) {
+    increasefire += 4;
+    createFireSource();
+  }
+});
+
+document.getElementById("decreaseFire").addEventListener("click", function () {
+  if (increasefire > 4) {
+    increasefire -= 4;
+    createFireSource();
+  }
+});
+
 function createFireSource() {
-  let increasefire = 10;
-  const maxIncrease = 36;
-
-  document
-    .getElementById("increaseFire")
-    .addEventListener("click", function () {
-      if (increasefire < maxIncrease) {
-        increasefire++;
-        console.log("Valor de increasefire:", increasefire);
-      } else {
-        console.log("Valor máximo de increasefire alcançado:", increasefire);
-      }
-    });
-
   for (let column = 0; column <= fireWidth; column++) {
     const overflowPixelIdenx = fireWidth * fireHeight;
     const pixelIndex = overflowPixelIdenx - fireWidth + column;
