@@ -3,6 +3,27 @@
   font-family: Cinzel;
 }
 
+footer {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.nav-container {
+  display: flex;
+  border-bottom: 1px solid #fff;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-container h1 {
+  font-size: 30px;
+  
+}
+
 .fire-container {
   display: flex;
   flex-direction: column;
