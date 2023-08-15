@@ -43,10 +43,10 @@ const fireColorsPalete = [
 
 function start() {
   createFireStructure();
-   createFireSource();
+  createFireSource();
   renderFire();
 
-  setInterval(calculateFirePropagation, 50);
+  setInterval(calculateFirePropagation, 60);
 }
 
 function createFireStructure() {
@@ -58,7 +58,7 @@ function createFireStructure() {
 }
 
 function calculateFirePropagation() {
-  for (let column = 0; column < fireWidth; column++) {
+  for (let column = 0; column < 40; column++) {
     for (let row = 0; row < fireHeight; row++) {
       const pixelIndex = column + fireWidth * row;
       updateFireIntensityPerPixel(pixelIndex);
@@ -115,11 +115,25 @@ function renderFire() {
 }
 
 function createFireSource() {
+  let increasefire = 10;
+  const maxIncrease = 36;
+
+  document
+    .getElementById("increaseFire")
+    .addEventListener("click", function () {
+      if (increasefire < maxIncrease) {
+        increasefire++;
+        console.log("Valor de increasefire:", increasefire);
+      } else {
+        console.log("Valor máximo de increasefire alcançado:", increasefire);
+      }
+    });
+
   for (let column = 0; column <= fireWidth; column++) {
     const overflowPixelIdenx = fireWidth * fireHeight;
     const pixelIndex = overflowPixelIdenx - fireWidth + column;
 
-    firePixelsArray[pixelIndex] = 36;
+    firePixelsArray[pixelIndex] = increasefire;
   }
 }
 
